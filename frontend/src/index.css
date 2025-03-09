@@ -7,7 +7,17 @@
       padding: 0;
       background-color: #f9f9f9;
       color: #333;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   
   /* Header */
   header.modern {
@@ -96,14 +106,70 @@
   /* Hero Section */
   #hero {
     position: relative;
-    overflow: hidden;
-    background: url('../src/components/images/ecommerce2.jpg') no-repeat center center/cover; 
-    padding: 50px 20px; 
-    color: white; 
+    height: 600px;
+    width: 100vw;
+    max-width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') 
+                no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    margin: 0;
     box-sizing: border-box;
-    margin: 20px auto;
-    height: 500px; 
-    width: 100%;  
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 123, 255, 0.2), rgba(106, 17, 203, 0.2));
+  }
+
+  #hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  #hero p {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+  }
+
+  #hero .cta-button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: linear-gradient(45deg, #007bff, #6a11cb);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  #hero .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
 
   #heroin {
@@ -119,9 +185,104 @@
   }
     
 
+  /* Products Hero Section */
+  #products-hero {
+    position: relative;
+    height: 600px;
+    width: 100vw;
+    max-width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') 
+                no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  #products-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 123, 255, 0.2), rgba(106, 17, 203, 0.2));
+  }
+
+  #products-hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  #products-hero p {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+  }
+
+  .search-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    background: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .search-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    color: #fff;
+    background: linear-gradient(45deg, #007bff, #6a11cb);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
   /* Products by category Section */
   #products {
     padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   #products h2 {

@@ -27,20 +27,16 @@ const About = () => {
         <div className="about-container">
           <h2 className="about-heading">About Us</h2>
           <p className="about-text">
-            Welcome to <strong>Mytalorzone By Sahiba</strong>, your one-stop shop for exquisite clothing. We are dedicated to providing you with the best quality products, with a focus on dependability, customer service, and uniqueness.
+            Welcome to <strong>Aura Store</strong>, your one-stop shop for exquisite clothing. We are dedicated to providing you with the best quality products, with a focus on dependability, customer service, and uniqueness.
           </p>
           <p className="about-text">
-            <strong>Mytalorzone By Sahiba</strong> is a clothing brand that offers creative, unique, and diverse clothing for girls, including traditional, western, and trendy styles.
+            <strong>Aura Store</strong> is a clothing brand that offers creative, unique, and diverse clothing for girls, including traditional, western, and trendy styles.
           </p>
           <p className="about-text">
-            Founded in 2015 by Sahiba, <strong>Mytalorzone</strong> has come a long way from its beginnings. When Sahiba first started out, her passion for fashion and design drove her to start her own business.
+            Founded in 2020, <strong>Aura Store</strong> has come a long way from its beginnings. When Sahiba first started out, her passion for fashion and design drove her to start her own business.
           </p>
           <p className="about-text">
             We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
-          </p>
-          <p className="about-signature">
-            Sincerely,<br />
-            <strong>Sahiba</strong>
           </p>
         </div>
       </section>
@@ -54,7 +50,7 @@ const About = () => {
         </div>
 
         <div className="footer-column">
-          <h4>About Mytalorzone</h4>
+          <h4>About Us</h4>
           <div className="footer-row"><a href="#">Company Info</a></div>
           <div className="footer-row"><a href="#">About Us</a></div>
         </div>

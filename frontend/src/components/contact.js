@@ -26,7 +26,7 @@ const Contact = () => {
       <section id="contact">
         <h2 className="contact-heading">Contact Us</h2>
         <p className="contact-description">
-          We'd love to hear from you! Fill out the form below and we’ll get back to you as soon as possible.
+          We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.
         </p>
         <form action="#" method="post" className="contact-form">
           <div className="form-group">
@@ -60,7 +60,7 @@ const Contact = () => {
         </div>
 
         <div className="footer-column">
-          <h4>About Mytalorzone</h4>
+          <h4>About Us</h4>
           <div className="footer-row"><a href="#">Company Info</a></div>
           <div className="footer-row"><a href="#">About Us</a></div>
         </div>

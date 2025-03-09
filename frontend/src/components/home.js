@@ -14,7 +14,7 @@ const Home = () => {
 
   const fetchProductsByCategories = async () => {
     try {
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/product/category", {
+      const response = await fetch("http://localhost:5000/product/category", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const Home = () => {
       const userId = localStorage.getItem('userId'); 
       const quantity = 1; 
 
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/addtocart", {
+      const response = await fetch("http://localhost:5000/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const Home = () => {
           productCard.classList.add("product-card");
           productCard.innerHTML = `
             <div class="product-image">
-                <img src="/public/images/${product.img}" alt="${product.name}">
+                <img src="/images/${product.img}" alt="${product.name}">
             </div>
             <div class="product-info">
                 <h3>${product.name}</h3>
@@ -149,7 +149,11 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="hero"></section>
+      <section id="hero">
+        <h1>Welcome to Aura Store</h1>
+        <p>Discover the latest trends in fashion with our curated collection of clothing and accessories.</p>
+        <a href="#products" className="cta-button">Shop Now</a>
+      </section>
 
       {/* Products Section */}
       <section id="products">
@@ -173,7 +177,7 @@ const Home = () => {
         </div>
 
         <div className="footer-column">
-          <h4>About Mytalorzone</h4>
+          <h4>About Us</h4>
           <div className="footer-row">
             <a href="#">Company Info</a>
           </div>

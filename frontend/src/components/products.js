@@ -11,7 +11,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/get-product", {
+        const response = await fetch("http://localhost:5000/get-product", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -72,7 +72,14 @@ const Products = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="heroin"></section>
+      <section id="products-hero">
+        <h1>Explore Our Collection</h1>
+        <p>Find your perfect style from our wide range of premium products</p>
+        <div className="search-container">
+          <input type="text" placeholder="Search products..." className="search-input" />
+          <button className="search-button">Search</button>
+        </div>
+      </section>
 
       {/* Products Section */}
       <section id="product">
@@ -81,7 +88,7 @@ const Products = () => {
           {products.map((product) => (
             <div key={product.id} className="products-card">
               <div className="products-image">
-                <img src={product.img} alt={product.name} />
+                <img src={`/images/${product.img}`} alt={product.name} />
               </div>
               <div className="products-info">
                 <h3>{product.name}</h3>
@@ -114,7 +121,7 @@ const Products = () => {
         </div>
 
         <div className="footer-column">
-          <h4>About Mytalorzone</h4>
+          <h4>About Us</h4>
           <div className="footer-row">
             <a href="#">Company Info</a>
           </div>

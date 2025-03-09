@@ -11,7 +11,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`https://ecommercebackend-02c1173a604e.herokuapp.com/${productId}`, {
+        const response = await fetch(`http://localhost:5000/${productId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const ProductDetails = () => {
       const userId = localStorage.getItem('userId'); 
       const quantity = 1; 
 
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/cart/addtocart", {
+      const response = await fetch("http://localhost:5000/cart/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
