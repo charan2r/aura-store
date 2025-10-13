@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 const Home = () => {
@@ -14,12 +15,11 @@ const Home = () => {
 
   const fetchProductsByCategories = async () => {
     try {
-      const response = await fetch("http://localhost:5000/product/category", {
-        method: "POST",
+      const response = await fetch("http://localhost:5000/products/category", {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({}), 
       });
 
       const data = await response.json();
@@ -35,8 +35,8 @@ const Home = () => {
 
   const handleAddToCart = async (productId) => {
     try {
-      const userId = localStorage.getItem('userId'); 
-      const quantity = 1; 
+      const userId = localStorage.getItem("userId");
+      const quantity = 1;
 
       const response = await fetch("http://localhost:5000/addtocart", {
         method: "POST",
@@ -66,7 +66,7 @@ const Home = () => {
   const displayProductsByCategories = (productsByCategory) => {
     const productsContainer = document.querySelector(".product-grid");
     if (productsContainer) {
-      productsContainer.innerHTML = ""; 
+      productsContainer.innerHTML = "";
 
       for (const [category, products] of Object.entries(productsByCategory)) {
         const categorySection = document.createElement("div");
@@ -95,11 +95,15 @@ const Home = () => {
                 <p class="product-sold">Sold: ${product.soldStockValue}</p>
                 <button class="add-to-cart" >Add to cart</button>
             </div>`;
-            productCard.querySelector('.add-to-cart').addEventListener('click', (e) => {
+          productCard
+            .querySelector(".add-to-cart")
+            .addEventListener("click", (e) => {
               e.stopPropagation();
               handleAddToCart(product.productId);
             });
-          productCard.addEventListener('click', () => handleProductClick(product.productId));
+          productCard.addEventListener("click", () =>
+            handleProductClick(product.productId)
+          );
           categoryProductsContainer.appendChild(productCard);
         });
 
@@ -108,7 +112,6 @@ const Home = () => {
       }
     }
   };
-
 
   return (
     <div>
@@ -134,7 +137,9 @@ const Home = () => {
             </li>
           </ul>
         </nav>
-        <div className="cart"><a href="/cart">🛒</a></div>
+        <div className="cart">
+          <a href="/cart">🛒</a>
+        </div>
         <div className="auth-links">
           <a href="/auth/login" className="login">
             🔑 Login
@@ -151,8 +156,13 @@ const Home = () => {
       {/* Hero Section */}
       <section id="hero">
         <h1>Welcome to Aura Store</h1>
-        <p>Discover the latest trends in fashion with our curated collection of clothing and accessories.</p>
-        <a href="#products" className="cta-button">Shop Now</a>
+        <p>
+          Discover the latest trends in fashion with our curated collection of
+          clothing and accessories.
+        </p>
+        <a href="#products" className="cta-button">
+          Shop Now
+        </a>
       </section>
 
       {/* Products Section */}

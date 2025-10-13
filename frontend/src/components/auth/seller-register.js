@@ -24,7 +24,7 @@ const SellerSignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/adminauth/seller/signup", {
+      const response = await fetch("http://localhost:5000/auth/seller/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,6 @@ const SellerSignup = () => {
   };
 
   return (
-    
     <div className="signup-container">
       <h2 className="signup-title">Seller Signup</h2>
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -123,10 +122,14 @@ const SellerSignup = () => {
         </button>
       </form>
       <div className="additional-links">
-        <button onClick={() => window.location.href = '/auth/seller-login'} className="additional-btn">Already Registered? Login</button>
+        <button
+          onClick={() => (window.location.href = "/auth/seller-login")}
+          className="additional-btn"
+        >
+          Already Registered? Login
+        </button>
       </div>
     </div>
-     
   );
 };
 

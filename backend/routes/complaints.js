@@ -1,9 +1,9 @@
 // complaintRoutes.js
-const express = require('express');
-const nodemailer = require('nodemailer');
-const Complaint = require('../models/complaintmodel');  // Import the Complaint model
+const express = require("express");
+const nodemailer = require("nodemailer");
+const Complaint = require("../models/complaintmodel"); // Import the Complaint model
 const router = express.Router();
-require('dotenv').config();
+require("dotenv").config();
 
 // Configure nodemailer
 const transporter = nodemailer.createTransport({
@@ -12,11 +12,11 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 });
 
 // Function to send confirmation email
@@ -25,7 +25,7 @@ const sendConfirmationEmail = async (email, complaintNumber, message) => {
     const mailOptions = {
       from: '"Mera Bestie" <pecommerce8@gmail.com>',
       to: email,
-      subject: 'Complaint Registration Confirmation',
+      subject: "Complaint Registration Confirmation",
       html: `
         <div style="font-family: 'Arial', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e1e1e1; border-radius: 10px; background-color: #ffffff;">
           <!-- Stylish Header -->
@@ -69,32 +69,34 @@ const sendConfirmationEmail = async (email, complaintNumber, message) => {
 
         This is an automated email. Please do not reply to this message.
         If you have any additional questions, feel free to contact our support team.
-      `
+      `,
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Confirmation email sent successfully:', info.response);
+    console.log("Confirmation email sent successfully:", info.response);
     return info;
   } catch (error) {
-    console.error('Error sending confirmation email:', error);
+    console.error("Error sending confirmation email:", error);
     throw error;
   }
 };
 
 // Post Complaint Route
-router.post('/post-complaints', async (req, res) => {
+router.post("/post-complaints", async (req, res) => {
   try {
     const { name, email, message, userType } = req.body;
 
     // Generate 6 digit random complaint number
-    const complaintNumber = Math.floor(100000 + Math.random() * 900000).toString();
+    const complaintNumber = Math.floor(
+      100000 + Math.random() * 900000
+    ).toString();
 
     const complaintData = {
       complaintNumber,
       name,
       email,
       message,
-      userType
+      userType,
     };
 
     const complaint = new Complaint(complaintData);
@@ -105,40 +107,38 @@ router.post('/post-complaints', async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: 'Complaint registered successfully',
-      complaint: result
+      message: "Complaint registered successfully",
+      complaint: result,
     });
-
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Error registering complaint',
-      error: error.message
+      message: "Error registering complaint",
+      error: error.message,
     });
   }
 });
 
-// Get All Complaints Route
-router.get('/get-complaints', async (req, res) => {
+// Get All Complaints (Admin only)
+router.get("/get-complaints", async (req, res) => {
   try {
     const complaints = await Complaint.find();
-    
+
     res.status(200).json({
       success: true,
-      complaints
+      complaints,
     });
-
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Error fetching complaints',
-      error: error.message
+      message: "Error fetching complaints",
+      error: error.message,
     });
   }
 });
 
-// Update Complaint Status Route
-router.put('/update-complaint-status', async (req, res) => {
+// Update Complaint Status (Admin only)
+router.put("/update-complaint-status", async (req, res) => {
   try {
     const { complaintId, status } = req.body;
 
@@ -151,21 +151,20 @@ router.put('/update-complaint-status', async (req, res) => {
     if (!updatedComplaint) {
       return res.status(404).json({
         success: false,
-        message: 'Complaint not found'
+        message: "Complaint not found",
       });
     }
 
     res.status(200).json({
       success: true,
-      message: 'Complaint status updated successfully',
-      complaint: updatedComplaint
+      message: "Complaint status updated successfully",
+      complaint: updatedComplaint,
     });
-
   } catch (error) {
     res.status(500).json({
-      success: false, 
-      message: 'Error updating complaint status',
-      error: error.message
+      success: false,
+      message: "Error updating complaint status",
+      error: error.message,
     });
   }
 });

@@ -14,7 +14,7 @@ const Login = () => {
     const data = { email, password };
 
     try {
-      const response = await fetch("https://ecommercebackend-02c1173a604e.herokuapp.com/auth/login", {
+      const response = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,43 +38,45 @@ const Login = () => {
 
   return (
     <div className="center-container">
-    <div id="login">
-      <h2>Login</h2>
-      <form id="login-form" className="login-form" onSubmit={handleLogin}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+      <div id="login">
+        <h2>Login</h2>
+        <form id="login-form" className="login-form" onSubmit={handleLogin}>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit" className="submit-btn">
+            Login
+          </button>
+        </form>
+        <div className="additional-links">
+          <button
+            onClick={() => navigate("/auth/register")}
+            className="additional-btn"
+          >
+            No Account? Register
+          </button>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="submit-btn">Login</button>
-      </form>
-      <div className="additional-links">
-        <button
-          onClick={() => navigate("/auth/register")}
-          className="additional-btn"
-        >
-          No Account? Register
-        </button>
       </div>
-    </div>
     </div>
   );
 };

@@ -11,12 +11,15 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/get-product", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "http://localhost:5000/products/get-products",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const data = await response.json();
         if (data.success) {
@@ -26,12 +29,11 @@ const Products = () => {
         }
       } catch (error) {
         setError("Failed to fetch products.");
-      } 
+      }
     };
 
     fetchProducts();
   }, []);
-
 
   return (
     <div>
@@ -76,7 +78,11 @@ const Products = () => {
         <h1>Explore Our Collection</h1>
         <p>Find your perfect style from our wide range of premium products</p>
         <div className="search-container">
-          <input type="text" placeholder="Search products..." className="search-input" />
+          <input
+            type="text"
+            placeholder="Search products..."
+            className="search-input"
+          />
           <button className="search-button">Search</button>
         </div>
       </section>
@@ -94,9 +100,14 @@ const Products = () => {
                 <h3>{product.name}</h3>
                 <p className="product-rating">Rating: {product.rating}</p>
                 <p className="product-price">Price: ${product.price}</p>
-                <p className="product-stock">Available: {product.inStockValue}</p>
+                <p className="product-stock">
+                  Available: {product.inStockValue}
+                </p>
                 <p className="product-sold">Sold: {product.soldStockValue}</p>
-                <button className="add-to-cart" onClick={() => addToCart(product.id)}>
+                <button
+                  className="add-to-cart"
+                  onClick={() => addToCart(product.id)}
+                >
                   Add to cart
                 </button>
               </div>

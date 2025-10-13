@@ -1,23 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import './productdetails.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "./productdetails.css";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/${productId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ productId })
-        });
+        const response = await fetch(
+          `http://localhost:5000/products/${productId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const data = await response.json();
         if (response.ok) {
@@ -26,7 +28,7 @@ const ProductDetails = () => {
           setError(data.message);
         }
       } catch (err) {
-        setError('Error fetching product details');
+        setError("Error fetching product details");
       }
     };
 
@@ -35,8 +37,8 @@ const ProductDetails = () => {
 
   const handleAddToCart = async (productId) => {
     try {
-      const userId = localStorage.getItem('userId'); 
-      const quantity = 1; 
+      const userId = localStorage.getItem("userId");
+      const quantity = 1;
 
       const response = await fetch("http://localhost:5000/cart/addtocart", {
         method: "POST",
@@ -59,9 +61,8 @@ const ProductDetails = () => {
   };
 
   return (
-
     <>
-    <header className="modern">
+      <header className="modern">
         <div className="logo">Aura Store</div>
         <nav>
           <ul>
@@ -95,28 +96,35 @@ const ProductDetails = () => {
           </a>
         </div>
       </header>
-    <div className="product-details-container">
-      {error ? (
-        <p className="error-message">{error}</p>
-      ) : (
-        product && (
-          <div>
-            <h1 className="product-title">{product.name}</h1>
-            <div class="product-image">
+      <div className="product-details-container">
+        {error ? (
+          <p className="error-message">{error}</p>
+        ) : (
+          product && (
+            <div>
+              <h1 className="product-title">{product.name}</h1>
+              <div class="product-image">
                 <img src={product.img} alt={product.name} />
+              </div>
+              <div className="product-info">
+                <p className="product-rating">Rating: {product.rating} ★</p>
+                <p className="product-price">Price: ${product.price}</p>
+                <p className="product-category">Category: {product.category}</p>
+                <p className="product-stock">
+                  Available Stock: {product.inStockValue}
+                </p>
+                <button
+                  className="add-to-cart-button"
+                  onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
-            <div className="product-info">
-              <p className="product-rating">Rating: {product.rating} ★</p>
-              <p className="product-price">Price: ${product.price}</p>
-              <p className="product-category">Category: {product.category}</p>
-              <p className="product-stock">Available Stock: {product.inStockValue}</p>
-              <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
-            </div>
-          </div>
-        )
-      )}
-    </div>
-    <footer className="modern-footer">
+          )
+        )}
+      </div>
+      <footer className="modern-footer">
         <div className="footer-column">
           <h4>Top Categories</h4>
           <div className="footer-row">
