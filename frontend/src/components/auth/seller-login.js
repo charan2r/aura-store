@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 const SellerLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    sellerId: "",
     emailOrPhone: "",
     password: "",
   });
@@ -46,15 +45,7 @@ const SellerLogin = () => {
       <div className="login-container">
         <form onSubmit={handleSubmit} className="login-form">
           <h2>Seller Login</h2>
-          <input
-            type="text"
-            name="sellerId"
-            placeholder="Seller ID"
-            value={formData.sellerId}
-            onChange={handleChange}
-            className="form-input"
-            required
-          />
+
           <input
             type="text"
             name="emailOrPhone"
@@ -77,6 +68,14 @@ const SellerLogin = () => {
             Login
           </button>
         </form>
+        <div className="additional-links">
+          <button
+            onClick={() => navigate("/auth/seller-register")}
+            className="additional-btn"
+          >
+            No Account? Register as Seller
+          </button>
+        </div>
       </div>
     </div>
   );

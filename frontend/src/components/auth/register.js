@@ -100,10 +100,10 @@ const Register = () => {
             Register
           </button>
         </form>
-        <div className="additional-links">
+        <div className="additional-link">
           <button
             onClick={() => (window.location.href = "/auth/login")}
-            className="additional-btn"
+            className="additional-btn2"
           >
             Already Registered? Login
           </button>
